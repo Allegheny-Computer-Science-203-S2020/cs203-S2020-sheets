@@ -5,12 +5,14 @@ before_install:
 script:
 - mkdir _build
 - latexmk -pdf -outdir=_build lab01/cs203S2020_lab01.tex
+- latexmk -pdf -outdir=_build lab02/cs203S2020_lab02.tex
 deploy:
   provider: releases
   api_key:
     secure: arblFGwPP3G51EylhNTN6ii/KnkQY1nZ3G37DUdaBHqiwGwbacX19LYNIlfjpbizVMnokUw3BVDd/xGFGyJR5SKGNj1Iu3ZVifl1wozsDc2xg579FvC4gUzcgWoBJP8gx6LnM1BoxHP6lFDIcIvW7eWkooe7bgjbSZqzHDqXYZljhaglQRUll6tsx37vSQ64rRHugyOvgjCf47a8rm2nlVgLEiauyvx7qKpxcBzB5IbbEoEyUB+5QLJdI2U7T3NdZquFEAuwXUWEVft0HfIGkIZIiMqrV+Z+B8K/lHcZWtS/tJYmNmpHK+6IzEXSJ2a/nzPFnao7rmK/QFHVQKP+hD6XbYGqtCb2W0Xy5D6maCF2tfnK1DDOF1iMKbfXVCvg5IGMG7/ahFOOYsFbfLfyokWnlHRWQziet5+ALUakEcC3emgKgyFECbDUA4N4JAL+Rm07ynFeYJWKjdiRwlnNEr0HJen/y/u9zlfUmemfkXsYTGNCx08J86T2DNqzydUnZgsyXdHRVFKGFzYZWBgaGYOW6OV8X282CiIawsuQeYg9OR4vhXi2Zb40yiOQ3DRWnsR16slQfqSqLUi/RPg1kZ1n2Uk1fug5EPYMs2tX3lR7R1E7gksbKTHgVZsB4mqhSDYF0v1QtiAHaU4RaGtteF4UXReQE96chHUvLNFbkcE=
   file:
     - _build/cs203S2020_lab01.pdf
+    - _build/cs203S2020_lab02.pdf
   skip_cleanup: true
   on:
     tags: true
