@@ -1,0 +1,381 @@
+\documentclass[11pt]{article}
+
+% NOTE: The "Edit" sections are changed for each assignment
+
+% Edit these commands for each assignment
+
+\newcommand{\assignmentduedate}{January 21}
+\newcommand{\assignmentassignedate}{January 14}
+\newcommand{\assignmentnumber}{One}
+
+\newcommand{\labyear}{2020}
+\newcommand{\labdueday}{Tuesday}
+\newcommand{\labassignday}{Tuesday}
+\newcommand{\labtime}{2:30 pm}
+
+\newcommand{\assigneddate}{Assigned: \labassignday, \assignmentassignedate, \labyear{} at \labtime{}}
+\newcommand{\duedate}{Due: \labdueday, \assignmentduedate, \labyear{} at \labtime{}}
+
+% NOTE: there was no source code for this assignment
+% Instead, the focus was on two Markdown files
+
+\newcommand{\assessment}{\lstinline{assessment.md}}
+\newcommand{\conduct}{\lstinline{conduct.md}}
+
+% Edit these commands to give the name to the main program
+
+\newcommand{\mainprogram}{\lstinline{compute_tf_monolith.py}}
+\newcommand{\mainprogramsource}{\lstinline{src/termfrequency/compute_tf_monolith.py}}
+
+% Edit this commands to describe key deliverables
+
+\newcommand{\reflection}{\lstinline{reflection.md}}
+
+% Commands to describe key development tasks
+
+% --> Running gatorgrader.sh
+\newcommand{\gatorgraderstart}{\command{gradle grade}}
+\newcommand{\gatorgradercheck}{\command{gradle grade}}
+
+% --> Compiling and running program with gradle
+\newcommand{\gradlebuild}{\command{gradle build}}
+\newcommand{\gradlerun}{\command{gradle run}}
+
+% Commands to describe key git tasks
+
+% NOTE: Could be improved, problems due to nesting
+
+\newcommand{\gitcommitfile}[1]{\command{git commit #1}}
+\newcommand{\gitaddfile}[1]{\command{git add #1}}
+
+\newcommand{\gitadd}{\command{git add}}
+\newcommand{\gitcommit}{\command{git commit}}
+\newcommand{\gitpush}{\command{git push}}
+\newcommand{\gitpull}{\command{git pull}}
+
+\newcommand{\gitcommitmainprogram}{\command{git commit src/termfrequency/compute_tf_monolith.py -m "Descriptive commit message"}}
+
+% Commands for the textbooks, since there are so many
+
+\newcommand{\cooperative}{{\em Cooperative Software Design\/}}
+\newcommand{\philosophy}{{\em Philosophy of Software Design\/}}
+\newcommand{\thinkpython}{{\em Think Python\/}}
+\newcommand{\programmingstyle}{{\em Exercises in Programming Style\/}}
+\newcommand{\pytest}{{\em Python Testing with Pytest\/}}
+
+% Use this when displaying a new command
+
+\newcommand{\command}[1]{``\lstinline{#1}''}
+\newcommand{\program}[1]{\lstinline{#1}}
+\newcommand{\url}[1]{\lstinline{#1}}
+\newcommand{\channel}[1]{\lstinline{#1}}
+\newcommand{\option}[1]{``{#1}''}
+\newcommand{\step}[1]{``{#1}''}
+
+\usepackage{pifont}
+\newcommand{\checkmark}{\ding{51}}
+\newcommand{\naughtmark}{\ding{55}}
+
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  columns=flexible,
+  breaklines=true
+}
+
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{Computer Science 203}
+\lhead{Laboratory Assignment \assignmentnumber{}}
+\rfoot{Page \thepage}
+\lfoot{\duedate}
+
+\usepackage{titlesec}
+\titlespacing\section{0pt}{6pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+
+\newcommand{\labtitle}[1]
+{
+  \begin{center}
+    \begin{center}
+      \bf
+      CMPSC 203\\Software Engineering\\
+      Spring 2020\\
+      \medskip
+    \end{center}
+    \bf
+    #1
+  \end{center}
+}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\labtitle{Laboratory \assignmentnumber{} \\ \assigneddate{} \\ \duedate{}}
+
+\section*{Objectives}
+
+To learn how to use GitHub and the GitHub Flow model to support collaboration
+among a team of software engineers. Along with exploring the use of GitHub
+features like the issue tracker and the pull request reviewer, in this
+assignment you will learn how to use Markdown to complete technical writing
+tasks. As a side effect of working in a team, you will also experience
+challenges, such as the creation of merge conflicts in a version control
+repository, that force you to develop practical solutions. You will also gain
+experience in talking with team members and leaders, student technical leaders,
+and the course instructor. Ultimately, students will work together to write (i)
+an assessment guide to evaluate a team member's mastery of technical and
+professional skills and (ii) a code of conduct governing how all team members
+will interact during the completion of software products.
+%
+You will also complete a reflection in a GitHub repository created by GitHub
+Classroom.
+
+\section*{Suggestions for Success}
+
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+
+\item {\bf Follow each step carefully}. Slowly read each sentence in the
+  assignment sheet, making sure that you precisely follow each instruction. Take
+  notes about each step that you attempt, recording your questions and ideas and
+  the challenges that you faced. If you are stuck, then please tell a technical
+  leader or instructor what assignment step you recently completed.
+
+\item {\bf Regularly ask and answer questions}. Please log into Slack at the
+  start of a laboratory or practical session and then join the appropriate
+  channel. If you have a question about one of the steps in an assignment, then
+  you can post it to the designated channel. Or, you can ask a student sitting
+  next to you or talk with a technical leader or the course instructor.
+
+\item {\bf Store your files in GitHub}. Starting with this laboratory
+  assignment, you will be responsible for storing all of your files (e.g., Java
+  source code and Markdown-based writing) in a Git repository using GitHub
+  Classroom. Please verify that you have saved your source code in your Git
+  repository by using \command{git status} to ensure that everything is
+  updated. You can see if your assignment submission meets the established
+  correctness requirements by using the provided checking tools on your local
+  computer and by checking the commits in GitHub.
+
+\item {\bf Keep all of your files}. Don't delete your programs, output files,
+  and written reports after you submit them through GitHub; you will need them
+  again when you study for the quizzes and examinations and work on the other
+  laboratory, practical, and final project assignments.
+
+\item {\bf Explore teamwork and technologies}. While certain aspects of the
+  laboratory assignments will be challenging for you, each part is designed to
+  give you the opportunity to learn both fundamental concepts in the field of
+  computer science and explore advanced technologies that are commonly employed
+  at a wide variety of companies. To explore and develop new ideas, you should
+  regularly communicate with your team and/or the student technical leaders.
+
+\item {\bf Hone your technical writing skills}. Computer science assignments
+  require to you write technical documentation and descriptions of your
+  experiences when completing each task. Take extra care to ensure that your
+  writing is interesting and both grammatically and technically correct,
+  remembering that computer scientists must effectively communicate and
+  collaborate with their team members and the student technical leaders and
+  course instructor.
+
+\item {\bf Review the Honor Code on the syllabus}. While you may discuss your
+  assignments with others, copying source code or writing is a violation of
+  Allegheny College's Honor Code.
+
+\end{itemize}
+
+\section*{Reading Assignment}
+
+% Module One Reading Assignment:
+
+% Cooperative Software Design, Chapters 1 - 3
+% Philosophy of Software Design, Chapters 1 - 3
+% Think Python, Chapters 1 - 3
+% Exercises in Programming Style, Prologue, Preface, Chapters 1 - 4
+% Python Testing with Pytest, Preface, Chapters 1 - 2
+
+If you have not done so already, please read all of the relevant ``GitHub
+Guides'', available at \url{https://guides.github.com/}, that explain how to use
+many of the features that GitHub provides. In particular, please make sure that
+you have read guides such as ``Mastering Markdown'' and ``Documenting Your
+Projects on GitHub''; each of them will help you to understand how to use both
+GitHub and GitHub Classroom.
+%
+To do well on this assignment you should also read Chapters 1 through 3 in in
+both \cooperative{} and \philosophy{}.
+%
+You are also expected to find and read all of the online resources that you need
+to complete this laboratory assignment.
+%
+Please see the course instructor if you have questions on these reading
+assignments.
+
+\section*{Creating an Assessment Guide and Code of Conduct}
+
+% Accept the assignment
+
+To access the practical assignment, you should go into the
+\channel{\#announcements} channel in our Slack workspace and find the
+announcement that provides a link for it. Copy this link and paste it into your
+web browser. Now, you should accept the laboratory assignment and see that
+GitHub Classroom created a new GitHub repository for you to access the
+assignment's starting materials and to store the completed version of your
+assignment. Specifically, to access your new GitHub repository for this
+assignment, please click the green ``Accept'' button and then click the link
+that is prefaced with the label ``Your assignment has been created here''. If
+you accepted the assignment and correctly followed these steps, you should have
+created a GitHub repository with a name like
+``Allegheny-Computer-Science-203-Spring-2020/computer-science-203-spring-2020-lab-1-gkapfham''.
+Unless you provide the instructor with documentation of the extenuating
+circumstances that you are facing, not accepting the assignment means that you
+will receive a failing grade for it.
+
+% Details of what students must complete
+
+Unlike the practical assignments, this laboratory assignment asks you to work in
+a entire-class team to write two documents that are each stored in a separate,
+shared GitHub repository. If you look in the repository that GitHub Classroom
+created, then you will find the link to a repository that stores the starting
+version of a guide supporting the assessment of a student's technical and
+professional skills. Similarly, you should also find the link to another
+repository that stores the start of a code of conduct for the members of a
+software engineering team. For this laboratory assignment, your task is to
+collaborate with the members of your class to write a full-featured assessment
+guide and code of conduct, using the GitHub Flow model to facilitate
+collaboration.
+
+Please note that you should use repository forks or branches and pull requests
+to ensure that your work is ultimately added to the repository's master branch.
+%
+When you follow the GitHub Flow model you should create a separate ``feature
+branch'' in your GitHub repository that contains changes that you want to make
+to, for instance, the code of conduct. Using appropriate commit messages, you
+will repeatedly commit to this branch until you have finished the feature. Now,
+you will use GitHub to raise a pull request, tagging the course instructor and
+the student technical leaders and asking them review your work. Once you have
+resolved all of the concerns raised by the reviewers of your pull request and it
+is approved by a majority of the student technical leaders, a member of your
+term should merge it into the master branch of the GitHub repository. At this
+point, you can delete the feature branch from the repository and start working
+on the next task associated with completing this project.
+%
+Since you can only use GitHub and GitHub Flow to complete this project, the use
+of tools like Google Docs is prohibited for this laboratory assignment.
+
+\section*{Collaborating with Your Software Engineering Team}
+
+Your team should use GitHub and its features (e.g., issue tracker, pull
+requests, commit log, and code review request) to complete all of the tasks
+referenced in the previous section.
+%
+Aiming to manage risk and estimate the effort required for individual team
+members to complete this project, you should assign people to teams, roles, and
+tasks. While it is acceptable for you to have in-person discussions with your
+team members or to talk about the project through Slack, please remember that
+all important discussions and decisions must be documented through GitHub.
+Finally, as you are working with your team, you should carefully document your
+experiences and contributions so that you can share them through writing stored
+in the repository created by GitHub Classroom.
+%
+Whenever possible, you should describe the your efforts on this laboratory
+assignment according to the following levels: N = None, I = Inadequate, A =
+Adequate, G = Good, and E = Excellent. Your evaluation of your own work should
+focus on your mastery of both technical and professional skills in software
+engineering. You should thoughtfully reflect on your current areas of expertise
+and opportunities for improvement. Please share your questions about this task
+with the instructor.
+
+Since multiple approaches may support the effective completion of the required
+documents, this assignment does not dictate team organization or communication
+strategies. The students in the course should instead work with each other, the
+student technical leaders, and the instructor to identify team roles and
+strategies for effective organization and communication. Importantly, you should
+make sure that every student in the class makes a contribution to both of the
+shared GitHub repositories (i.e., the distinct GitHub repositories that store
+the code of conduct and the assessment guide).
+%
+Please make sure that you work in collaborate with your team members who were
+designated as the ``point person'' for (i) brainstorming for the code of conduct
+and assessment guide, (ii) technical writing with Markdown, (iii) use of GitHub,
+GitHub Flow, and Travis CI, and (iv) technical leadership and project
+management.
+%
+By the end of the laboratory session, the team should have identified roles for
+each student in the class, thus ensuring that everyone has assigned tasks that
+will both capitalize on their expertise and enhance their software engineering
+skills.
+
+%%
+%Students with questions about the use of GitHub should first talk to a team
+%leader.
+
+%With that said, you
+%should plan to use either forks or branches of a GitHub repository to organize
+%your work.
+%%
+%Once a specific branch/fork contains the finished version of its associated
+%deliverable, a team member should create a pull request for discussion and
+%review. If the team leaders, the technical leaders, and the course instructor
+%judge that the pull request has all of the expected characteristics, then it
+%should be merged into the ``master'' branch of the appropriate repository. If
+%the pull request is not accepted, then the team member should improve it until
+%it meets every reviewer's expectations. Your team should continue to use this
+%model, called ``GitHub Flow'', to support the completion of all deliverables.
+
+Please remember that Travis CI is configured to check the Markdown files in the
+two repositories with \command{mdl}.
+%
+If your writing meets all the established requirements set by this linting
+tools, then you will see a green \checkmark{} in the listing of commits in
+GitHub after awhile. If your submission does not meet the requirements, a red
+\naughtmark{} will appear instead. The instructor will assign your grade in
+adherence to a mastery grading paradigm explained in the \command{README.md}
+file of your GitHub repository.
+
+% instructor will reduce a student's grade for this assignment if the red
+% \naughtmark{} appears on the last commit in GitHub immediately before the
+% assignment's due date.
+
+% Yet, if the green \checkmark{} appears on the last commit
+% in your repository, then you satisfied the basic linting checks for the Markdown
+% files.
+
+\section*{Summary of the Required Deliverables}
+
+\noindent Students do not need to submit printed source code or technical
+writing for any assignment in this course. Instead, this assignment invites you
+to submit, using GitHub, the following deliverables. You work will be graded on
+a checkmark basis for this laboratory assignment.
+%
+Unless you provide the course instructor with documentation of the severe and
+extenuating circumstances that you are facing, no late work will be considered
+towards your completion grade for this practical assignment.
+
+\begin{enumerate}
+
+\setlength{\itemsep}{-.01in}
+
+\item A properly documented, well-formatted, and correct version of
+  \assessment{} that meets all of the established requirements and was
+  collaboratively developed by the entire class.
+
+\item A properly documented, well-formatted, and correct version of
+  \conduct{} that meets all of the established requirements and was
+  collaboratively developed by the entire class.
+
+\item Stored in a Markdown file called \reflection{}, a multiple-paragraph
+  response that documents and evaluates the work that you completed for this
+  laboratory assignment.
+
+\end{enumerate}
+
+\noindent Please submit the first two deliverables in the shared, team-based
+GitHub repositories and submit the third deliverable in your individual, private
+repository that was created by GitHub Classroom.
+
+\end{document}
