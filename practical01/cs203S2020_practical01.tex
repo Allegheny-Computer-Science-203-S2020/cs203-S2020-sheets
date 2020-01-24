@@ -21,6 +21,9 @@
 \newcommand{\mainprogram}{\lstinline{compute_tf_monolith.py}}
 \newcommand{\mainprogramsource}{\lstinline{termfrequency/compute_tf_monolith.py}}
 
+\newcommand{\checkprogram}{\lstinline{check_compute_tf_monolith.py}}
+\newcommand{\checkprogramsource}{\lstinline{checks/check_compute_tf_monolith.py}}
+
 % Edit this commands to describe key deliverables
 
 \newcommand{\reflection}{\lstinline{writing/reflection.md}}
@@ -305,8 +308,8 @@ following commands inside of either a Docker container or your terminal window.
 
 For instance, if you run the first of the above commands, then it will produce
 the following correct output in your terminal window. If you are not sure what
-this output means, then please review the reading assignment in the
-\programmingstyle{} book.
+this output means or how the program created it, then review the relevant
+content in the \programmingstyle{} book.
 
 \vspace*{-.1in}
 
@@ -323,17 +326,65 @@ this output means, then please review the reading assignment in the
 
 \section*{Checking the Correctness of Your Program and Writing}
 
-Next, you need to implement
-and explain some approach to automatically testing this monolithic Python
-program. Your approach should be executable at the command-line and always
-ensure that the program produces the expected output for both of the two
-provided input files. Please explain your automated testing strategy in
-\reflection{}.
+Next, you need to implement and explain some approach to automatically testing
+this monolithic Python program! Your approach should be executable at the
+command-line and always ensure that the program produces the expected output for
+both the small input file. To start this phase of the assignment, please review
+the source code in the \checkprogramsource{} file. You will notice that this is
+a Python program that calls the \mainprogram{} to see if it produces the
+expected output. Since this program is not yet completed, you should carefully
+review all of the \command{TODO} markers and add each of the requested source
+code statements.
+%
+For instance, the following conditional logic will check whether or not the
+\mainprogram{} produces the first line in the expected output. Along with
+resolving all of the other \command{TODO} markers in the source code, you will
+need to add all of the additional checks for the other lines in the program's
+output.
 
-In addition to writing your own automated testing tool, you can use GatorGrader
-to check other characteristics of your project. To automatically check your
-Python source code you can get started with the use of the GatorGrader tool,
-typing the command \gatorgraderstart{} in your terminal window.
+\begin{verbatim}
+  if "live  -  2" not in decoded_stdout:
+      print(" - `live  -  2' is not detected")
+      exit_code = 1
+\end{verbatim}
+
+Before you move onto the next steps of this assignment, please make sure that
+you understand how the following Python source code lines check whether or not
+the \mainprogramsource{} is working correctly. You should also take time to
+reflect on how the use of the monolithic program style limits a software
+engineer's ability to effectively test \mainprogram. Now that you have finished
+implementing the \checkprogramsource{} you should also think about the
+limitations of this approach to testing a Python program. Finally, can you think
+of a way in which you code refactor the source code of the \mainprogram{} so
+that it would be easier to test it? What are the trade-offs associated with this
+alternative approach to implementing \mainprogram? Which approach do you prefer?
+Why do you prefer this approach?
+
+\begin{verbatim}
+  # assume that all of the checks run correctly and prove otherwise
+  exit_code = 0
+
+  # define the command that will call the check_compute_tf_monolith.py
+  command = "pipenv run python termfrequency/compute_tf_monolith.py inputs/input.txt"
+
+  # tokenize this command so that subprocess can accept each of its parts
+  tokenized_command = shlex.split(command)
+  print("Tokenized command to execute: " + str(tokenized_command))
+  print()
+
+  # run the tokenized command and display the output as a byte string
+  result = subprocess.run(tokenized_command, stdout=subprocess.PIPE, check=True)
+  print("Output of executed command: " + str(result.stdout))
+  print()
+
+  # decode the byte string using UTF-8
+  decoded_stdout = str(result.stdout.decode("utf-8"))
+\end{verbatim}
+
+In addition to finishing the automated testing tool, you can use GatorGrader to
+check other characteristics of your project. To automatically check your Python
+source code you can get started with the use of the GatorGrader tool, typing the
+command \gatorgraderstart{} in your terminal window.
 %
 Once your program is running correctly, fulfilling at least some of the
 assignment's requirements, you should transfer your files to GitHub using the
@@ -381,20 +432,33 @@ to submit, using GitHub, the following deliverables.
   \mainprogramsource{} that both meets all of the established requirements and
   produces the desired output.
 
-\item Stored in a Markdown file called \reflection{}, a four-paragraph response,
-  with each paragraph consisting of at least 100 words, for each of the stated
-  prompts.
+\item A properly documented, well-formatted, and correct version of
+  \checkprogramsource{} that both meets all of the established requirements and
+  produces the desired output.
+
+\item Stored in a Markdown file called \reflection{}, a detailed response to all
+  of the stated prompts and a code block showing your program's output on the
+  small input file.
 
 \end{enumerate}
 
 \section*{Evaluation of Your Practical Assignment}
 
-Practical assignments are graded on a completion --- or ``checkmark'' --- basis. If
-your GitHub repository has a \checkmark{} for the last commit before the
-deadline then you will receive the highest possible grade for the assignment.
-However, you will fail the assignment if you do not complete it correctly, as
-evidenced by a red \naughtmark{} in your commit listing, by the set deadline for
-completing the project.
+Using a report that the instructor shares with you through the commit log in
+GitHub, you will privately received a grade on this assignment and feedback on
+your submitted deliverables. Your grade for the assignment will be a function of
+the whether or not it was submitted in a timely fashion and if your program
+received a green \checkmark{} indicating that it met all of the requirements.
+Other factors will also influence your final grade on the assignment. In
+addition to studying the efficiency and effectiveness and documentation of your
+Java source code, the instructor will also evaluate the correctness of your
+technical writing. If your submission receives a red \naughtmark{}, the
+instructor will reduce your grade for the assignment. Please remember to read
+your GitHub repository's \program{README.md} file for a description of the four
+grades that you will receive for this practical assignment. Students should
+follow the instructions in the \program{README.md} file to ask the instructor to
+review their assignment and to provide you with constructive feedback before you
+submit it for the final assessment.
 
 \section*{Adhering to the Honor Code}
 
