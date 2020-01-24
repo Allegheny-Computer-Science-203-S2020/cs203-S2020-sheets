@@ -219,18 +219,17 @@ and Pipenv:
 
 \end{itemize}
 
-
 To access the practical assignment, you should go into the
 \channel{\#announcements} channel in our Slack team and find the announcement
 that provides a link for it. Copy this link and paste it into your web browser.
 Now, you should accept the practical assignment and see that GitHub Classroom
 created a new GitHub repository for you to access the assignment's starting
 materials and to store the completed version of your assignment. Specifically,
-to access your new GitHub repository for this assignment, please click the
-green ``Accept'' button and then click the link that is prefaced with the label
-``Your assignment has been created here''. If you accepted the assignment and
-correctly followed these steps, you should have created a GitHub repository
-with a name like
+to access your new GitHub repository for this assignment, please click the green
+``Accept'' button and then click the link that is prefaced with the label ``Your
+assignment has been created here''. If you accepted the assignment and correctly
+followed these steps, you should have created a GitHub repository with a name
+like
 ``Allegheny-Computer-Science-203-Spring-2020/computer-science-203-spring-2020-practical-1-gkapfham''.
 Unless you provide the instructor with documentation of the extenuating
 circumstances that you are facing, not accepting the assignment means that you
@@ -246,8 +245,81 @@ understand the type of output that your program should produce.
 At the outset, you should notice that the provided source code does not contain
 all of the source code from Chapter 3 of the book. You will need to add in the
 appropriate source code and documentation to ensure that the Python program
-passes all of the checks and produces the correct output. Make sure that you
-fully document all aspects of the Python program!
+passes all of the checks and produces the correct output. As you complete this
+assignment, please make sure that you understand and document all aspects of the
+provided Python programs!
+
+Once you have installed Docker Desktop, you can use the following
+\command{docker run} command to start \command{gradle grade} as a containerized
+application, using the ``DockaGator'' Docker image available on DockerHub. You
+can run the following command to run the \command{gradle grade} on your project:
+
+\begin{verbatim}
+docker run --rm --name dockagator \
+  -v "$(pwd)":/project \
+  -v "$HOME/.dockagator":/root/.local/share \
+  gatoreducator/dockagator
+\end{verbatim}
+
+The aforementioned command will use \program{"\$(pwd)"} (i.e., the current
+directory) as the project directory and \program{"\$HOME/.dockagator"} as the
+cached GatorGrader directory. Please note that both of these directories must
+exist, although only the project directory must contain some content. Generally,
+the project directory should contain the source code and technical writing for
+this assignment, as provided to you through GitHub during the completion of a
+previous step. Additionally, the cache directory should not contain anything
+other than directories and programs created by DockaGator, thus ensuring that
+they are not otherwise overwritten during the completion of the assignment. To
+ensure that the previous command will work correctly, you should create the
+cache directory by running the command \command{mkdir \$HOME/.dockagator}; you
+will only need to do this once. If the above \command{docker run} command does
+not work correctly on the Windows operating system, then you may need to instead
+run the following command to work around limitations in the terminal window:
+
+\begin{verbatim}
+docker run --rm --name dockagator \
+  -v "%cd%:/project" \
+  -v "%HomeDrive%%HomePath%/.dockagator:/root/.local/share" \
+  gatoreducator/dockagator
+\end{verbatim}
+
+To enter into an ``interactive terminal'' in the Docker container, you can add
+\command{-it} before \command{--rm} and \command{/bin/bash} to the end of the
+previous \command{docker run} command that you typed. If you are stuck on this
+step, check your GitHub repository's documentation for more details!
+%
+In addition to being able to run the grading command in a Docker container, you
+should also be able to run all of the Python programs in your terminal using the
+previously installed Pyenv and Pipenv programs. Please note that this means
+that, after completing this assignment, you should be able to run both of the
+following commands inside of either a Docker container or your terminal window.
+
+\begin{itemize}
+
+  \item \program{pipenv run python termfrequency/compute_tf_monolith.py inputs/input.txt}
+  \item \program{pipenv run python termfrequency/compute_tf_monolith.py inputs/pride-and-prejudice.txt}
+
+\end{itemize}
+
+\vspace*{-.2in}
+
+For instance, if you run the first of the above commands, then it will produce
+the following correct output in your terminal window. If you are not sure what
+this output means, then please review the reading assignment in the
+\programmingstyle{} book.
+
+\vspace*{-.1in}
+
+\begin{verbatim}
+  live  -  2
+  mostly  -  2
+  white  -  1
+  tigers  -  1
+  india  -  1
+  wild  -  1
+  lions  -  1
+  africa  -  1
+\end{verbatim}
 
 \section*{Checking the Correctness of Your Program and Writing}
 
