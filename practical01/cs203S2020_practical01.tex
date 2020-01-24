@@ -217,8 +217,8 @@ and Pipenv:
 
   \item Install the Pyenv tool and use it to install a recent version of Python.
 
-  \item Install the Pipenv tool and later use it to install Python application
-    dependencies
+  \item Install the Pipenv tool and later use it to install a Python
+    application's dependencies
 
 \end{itemize}
 
@@ -381,7 +381,11 @@ Why do you prefer this approach?
   decoded_stdout = str(result.stdout.decode("utf-8"))
 \end{verbatim}
 
-In addition to finishing the automated testing tool, you can use GatorGrader to
+After completing the source code in \checkprogramsource{} you can run this
+program by typing \command{pipenv run python
+checks/check_compute_tf_monolith.py} in your terminal window.
+%
+Along with running this automated checking tool, you can use GatorGrader to
 check other characteristics of your project. To automatically check your Python
 source code you can get started with the use of the GatorGrader tool, typing the
 command \gatorgraderstart{} in your terminal window.
@@ -410,10 +414,10 @@ instead. The instructor will reduce a student's grade for this assignment if the
 red \naughtmark{} appears on the last commit in GitHub immediately before the
 assignment's due date. Yet, if the green \checkmark{} appears on the last commit
 in your GitHub repository, then you satisfied all of the main checks and you
-will earn full credit. Unless you provide the course instructor with
-documentation of the severe and extenuating circumstances that you are facing,
-no late work will be considered towards your completion grade for this practical
-assignment.
+will earn full credit for one part of your grade. Unless you provide the course
+instructor with documentation of the severe and extenuating circumstances that
+you are facing, no late work will be considered towards your completion grade
+for this assignment.
 
 \section*{Summary of the Required Deliverables}
 
@@ -451,7 +455,7 @@ the whether or not it was submitted in a timely fashion and if your program
 received a green \checkmark{} indicating that it met all of the requirements.
 Other factors will also influence your final grade on the assignment. In
 addition to studying the efficiency and effectiveness and documentation of your
-Java source code, the instructor will also evaluate the correctness of your
+Python source code, the instructor will also evaluate the correctness of your
 technical writing. If your submission receives a red \naughtmark{}, the
 instructor will reduce your grade for the assignment. Please remember to read
 your GitHub repository's \program{README.md} file for a description of the four
