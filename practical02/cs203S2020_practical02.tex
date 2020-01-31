@@ -133,62 +133,45 @@ automated testing with Pytest and a program in the cookbook style.
 \begin{itemize}
   \setlength{\itemsep}{0pt}
 
-\item {\bf Use the laboratory computers}. The computers in this laboratory
-  feature specialized software for completing this course's Laboratory and
-  practical assignments. If it is necessary for you to work on a different
-  machine, be sure to regularly transfer your work to a laboratory machine so
-  that you can check its correctness. If you cannot use a laboratory computer
-  and you need help with the configuration of your own laptop, then please
-  carefully explain its setup to a teaching assistant or the course instructor
-  when you are asking questions.
-
 \item {\bf Follow each step carefully}. Slowly read each sentence in the
-  assignment sheet, making sure that you precisely follow each instruction.
-  Take notes about each step that you attempt, recording your questions and
-  ideas and the challenges that you faced. If you are stuck, then please tell a
-  teaching assistant or instructor what assignment step you recently completed.
+  assignment sheet, making sure that you precisely follow each instruction. Take
+  notes about each step that you attempt, recording your questions and ideas and
+  the challenges that you faced. If you are stuck, then please tell a technical
+  leader or instructor what assignment step you recently completed.
 
 \item {\bf Regularly ask and answer questions}. Please log into Slack at the
   start of a laboratory or practical session and then join the appropriate
   channel. If you have a question about one of the steps in an assignment, then
   you can post it to the designated channel. Or, you can ask a student sitting
-  next to you or talk with a teaching assistant or the course instructor.
+  next to you or talk with a technical leader or the course instructor.
 
-\item {\bf Store your files in GitHub}. As in all of your past assignments, you
-  will be responsible for storing all of your files (e.g., Python source code and
-  Markdown-based writing) in a Git repository using GitHub Classroom. Please
-  verify that you have saved your source code in your Git repository by using
-  \command{git status} to ensure that everything is updated. You can see if
-  your assignment submission meets the established correctness requirements by
-  using the provided checking tools on your local computer and in checking the
-  commits in GitHub.
+\item {\bf Store your files in GitHub}. Starting with this laboratory
+  assignment, you will be responsible for storing all of your files (e.g., Java
+  source code and Markdown-based writing) in a Git repository using GitHub
+  Classroom. Please verify that you have saved your source code in your Git
+  repository by using \command{git status} to ensure that everything is
+  updated. You can see if your assignment submission meets the established
+  correctness requirements by using the provided checking tools on your local
+  computer and by checking the commits in GitHub.
 
 \item {\bf Keep all of your files}. Don't delete your programs, output files,
   and written reports after you submit them through GitHub; you will need them
   again when you study for the quizzes and examinations and work on the other
   laboratory, practical, and final project assignments.
 
-\item {\bf Back up your files regularly}. All of your files are regularly
-  backed-up to the servers in the Department of Computer Science and, if you
-  commit your files regularly, stored on GitHub. However, you may want to use a
-  flash drive, Google Drive, or your favorite backup method to keep an extra
-  copy of your files on reserve. In the event of any type of system failure,
-  you are responsible for ensuring that you have access to a recent backup copy
-  of all your files.
-
-\item {\bf Explore teamwork and technologies}. While certain aspects of these
-  assignments will be challenging for you, each part is designed to give you the
-  opportunity to learn both fundamental concepts in the field of computer
-  science and explore advanced technologies that are commonly employed at a wide
-  variety of companies. To explore and develop new ideas, you should regularly
-  communicate with your team and/or the teaching assistants and tutors.
+\item {\bf Explore teamwork and technologies}. While certain aspects of the
+  laboratory assignments will be challenging for you, each part is designed to
+  give you the opportunity to learn both fundamental concepts in the field of
+  computer science and explore advanced technologies that are commonly employed
+  at a wide variety of companies. To explore and develop new ideas, you should
+  regularly communicate with your team and/or the student technical leaders.
 
 \item {\bf Hone your technical writing skills}. Computer science assignments
   require to you write technical documentation and descriptions of your
   experiences when completing each task. Take extra care to ensure that your
   writing is interesting and both grammatically and technically correct,
   remembering that computer scientists must effectively communicate and
-  collaborate with their team members and the tutors, teaching assistants, and
+  collaborate with their team members and the student technical leaders and
   course instructor.
 
 \item {\bf Review the Honor Code on the syllabus}. While you may discuss your
@@ -245,13 +228,23 @@ all of the source code from Chapter 4 of the book. You will need to add in the
 appropriate source code and documentation to ensure that the Python program
 passes all of the checks and produces the correct output.
 %
-As you are adding all of the required code, you should also run the Pytest test
-suite that currently contains one test. Following the strategy of this test and
-the documentation for the functions in the program, please add at least four
-more tests to establish a confidence in the correctness of the cookbook-style
-program. If you have already installed Pipenv and the project's development
-dependencies, you can run the tests by typing \command{pipenv run pytest}. How
-does this testing strategy compare to the one in the \mbox{last practical?}
+Please remember that, when you start this practical assignment, the provided
+Python source code will both not pass the linting checks and not produce the
+correct output.
+%
+As you are adding the required code, you should also run the Pytest test suite
+that currently contains one test. Following the strategy of this test and the
+documentation for the functions in the program, please add at least four more
+tests to establish a confidence in the correctness of the cookbook-style
+program.
+%
+Please make sure that your test cases have assertions that can distinguish
+between correct and incorrect function outputs.
+%
+If you have already installed Pipenv and the project's development dependencies,
+you can run the tests by typing \command{pipenv run test}. How does this testing
+strategy compare to the one in the \mbox{last practical?} What are the benefits
+and drawbacks associated with testing through the use of Pytest?
 
 \section*{Checking the Correctness of Your Program and Writing}
 
@@ -303,22 +296,34 @@ to submit, using GitHub, the following deliverables.
 
 \item A properly documented, well-formatted, and correct version of
   \testprogramsource{} that contains at least five passing tests and produces
-  the desired diagnostic output.
+  the anticipated diagnostic output.
 
-\item Stored in a Markdown file called \reflection{}, a six-paragraph response,
-  with each paragraph consisting of at least 100 words, for each of the stated
-  prompts.
+\item Stored in a Markdown file called \reflection{}, a multiple-paragraph
+  response for each of the stated prompts, including details about test suite
+  output in a fenced code block and completed lists of details about Python
+  source code and additional supporting files.
 
 \end{enumerate}
 
 \section*{Evaluation of Your Practical Assignment}
 
-Practical assignments are graded on a completion --- or ``checkmark'' --- basis. If
-your GitHub repository has a \checkmark{} for the last commit before the
-deadline then you will receive the highest possible grade for the assignment.
-However, you will fail the assignment if you do not complete it correctly, as
-evidenced by a red \naughtmark{} in your commit listing, by the set deadline for
-completing the project.
+Using a report that the instructor shares with you through the commit log in
+GitHub, you will privately received a grade on this assignment and feedback on
+your submitted deliverables. Your grade for the assignment will be a function of
+the whether or not it was submitted in a timely fashion and if your program
+received a green \checkmark{} indicating that it met all of the requirements.
+Other factors will also influence your final grade on the assignment. In
+addition to studying the efficiency and effectiveness and documentation of your
+Python source code, the instructor will also evaluate the correctness of your
+technical writing. If your submission receives a red \naughtmark{}, the
+instructor will reduce your grade for the assignment. Please remember to read
+your GitHub repository's \program{README.md} file for a description of the four
+grades that you will receive for this practical assignment. Students should
+follow the instructions in the \program{README.md} file to ask the instructor to
+review their assignment and to provide you with constructive feedback before you
+submit it for the final assessment.
+
+\section*{Adhering to the Honor Code}
 
 In adherence to the Honor Code, students should complete this assignment on an
 individual basis. While it is appropriate for students in this class to have
