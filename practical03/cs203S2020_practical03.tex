@@ -134,62 +134,45 @@ automated coverage testing with Pytest of a cookbook-styled program.
 \begin{itemize}
   \setlength{\itemsep}{0pt}
 
-\item {\bf Use the laboratory computers}. The computers in this laboratory
-  feature specialized software for completing this course's Laboratory and
-  practical assignments. If it is necessary for you to work on a different
-  machine, be sure to regularly transfer your work to a laboratory machine so
-  that you can check its correctness. If you cannot use a laboratory computer
-  and you need help with the configuration of your own laptop, then please
-  carefully explain its setup to a teaching assistant or the course instructor
-  when you are asking questions.
-
 \item {\bf Follow each step carefully}. Slowly read each sentence in the
-  assignment sheet, making sure that you precisely follow each instruction.
-  Take notes about each step that you attempt, recording your questions and
-  ideas and the challenges that you faced. If you are stuck, then please tell a
-  teaching assistant or instructor what assignment step you recently completed.
+  assignment sheet, making sure that you precisely follow each instruction. Take
+  notes about each step that you attempt, recording your questions and ideas and
+  the challenges that you faced. If you are stuck, then please tell a technical
+  leader or instructor what assignment step you recently completed.
 
 \item {\bf Regularly ask and answer questions}. Please log into Slack at the
   start of a laboratory or practical session and then join the appropriate
   channel. If you have a question about one of the steps in an assignment, then
   you can post it to the designated channel. Or, you can ask a student sitting
-  next to you or talk with a teaching assistant or the course instructor.
+  next to you or talk with a technical leader or the course instructor.
 
-\item {\bf Store your files in GitHub}. As in all of your past assignments, you
-  will be responsible for storing all of your files (e.g., Python source code and
-  Markdown-based writing) in a Git repository using GitHub Classroom. Please
-  verify that you have saved your source code in your Git repository by using
-  \command{git status} to ensure that everything is updated. You can see if
-  your assignment submission meets the established correctness requirements by
-  using the provided checking tools on your local computer and in checking the
-  commits in GitHub.
+\item {\bf Store your files in GitHub}. Starting with this laboratory
+  assignment, you will be responsible for storing all of your files (e.g., Java
+  source code and Markdown-based writing) in a Git repository using GitHub
+  Classroom. Please verify that you have saved your source code in your Git
+  repository by using \command{git status} to ensure that everything is
+  updated. You can see if your assignment submission meets the established
+  correctness requirements by using the provided checking tools on your local
+  computer and by checking the commits in GitHub.
 
 \item {\bf Keep all of your files}. Don't delete your programs, output files,
   and written reports after you submit them through GitHub; you will need them
   again when you study for the quizzes and examinations and work on the other
   laboratory, practical, and final project assignments.
 
-\item {\bf Back up your files regularly}. All of your files are regularly
-  backed-up to the servers in the Department of Computer Science and, if you
-  commit your files regularly, stored on GitHub. However, you may want to use a
-  flash drive, Google Drive, or your favorite backup method to keep an extra
-  copy of your files on reserve. In the event of any type of system failure,
-  you are responsible for ensuring that you have access to a recent backup copy
-  of all your files.
-
-\item {\bf Explore teamwork and technologies}. While certain aspects of these
-  assignments will be challenging for you, each part is designed to give you the
-  opportunity to learn both fundamental concepts in the field of computer
-  science and explore advanced technologies that are commonly employed at a wide
-  variety of companies. To explore and develop new ideas, you should regularly
-  communicate with your team and/or the teaching assistants and tutors.
+\item {\bf Explore teamwork and technologies}. While certain aspects of the
+  laboratory assignments will be challenging for you, each part is designed to
+  give you the opportunity to learn both fundamental concepts in the field of
+  computer science and explore advanced technologies that are commonly employed
+  at a wide variety of companies. To explore and develop new ideas, you should
+  regularly communicate with your team and/or the student technical leaders.
 
 \item {\bf Hone your technical writing skills}. Computer science assignments
   require to you write technical documentation and descriptions of your
   experiences when completing each task. Take extra care to ensure that your
   writing is interesting and both grammatically and technically correct,
   remembering that computer scientists must effectively communicate and
-  collaborate with their team members and the tutors, teaching assistants, and
+  collaborate with their team members and the student technical leaders and
   course instructor.
 
 \item {\bf Review the Honor Code on the syllabus}. While you may discuss your
@@ -250,17 +233,44 @@ the documentation for the functions in the program, please add many more tests
 to establish a confidence in the correctness of the cookbook-style program.
 %
 If you have already installed Pipenv and the project's development dependencies,
-you can run the tests by typing \command{pipenv run pytest}. First, you should
-explore the different command-line options for running the test suite, like
-\command{-s}, \command{--lf}, and \command{--ff}.
-%
-Next, you should follow the instructions in the \program{README} file to run the
-test suite while perform ``code coverage analysis'', thereby tracking how the
-tests exercise the program.
+you can run the tests by typing \command{pipenv run test} and then collect the
+coverage for the test suite by typing \command{pipenv run cover}.
 %
 After studying the coverage report, you should add tests to the suite with the
 aim of incrementally working towards full coverage of the program's statements
-and more confidence in its correctness.
+and branches, establishing a confidence in its correctness.
+
+\noindent As you continue to work on this assignment, make sure that think about
+these technical issues:
+
+\vspace*{-.1in}
+
+\begin{itemize}
+
+  \setlength{\itemsep}{0pt}
+
+  \item Since you wrote test cases for the \mainprogram{} in the previous
+    practical assignment, you should copy them over into the test suite for this
+    assignment. However, before you do that, collect the coverage information
+    for the test suite when it only has a single test inside of it. Can you
+    explain the meaning of the \command{77}, \command{26-30}, and
+    \command{80->82} labels that are in the ``Missing'' section of the coverage
+    report table generated by Pytest and Coverage.py?
+
+  \item As you are working to increase the coverage of your test suite it is
+    worth it to consider the following questions: What is the benefit of
+    tracking the coverage of your test suite? What does it mean if a statement,
+    block of statements, or branch in your program is not covered? What does it
+    mean if one of these entities is, in fact, covered by the test suite? What
+    are the limitations associated with using code coverage to assess the
+    adequacy of your test suite?
+
+  \item Although your GitHub repository is not currently setup to do so, it is
+    possible to report a test suite's code coverage to services like CodeCov.io.
+    What are the benefits from integrating code coverage calculation into
+    continuous integration and the review of pull requests on GitHub?
+
+\end{itemize}
 
 \section*{Checking the Correctness of Your Program and Writing}
 
