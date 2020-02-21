@@ -11,6 +11,7 @@ script:
 - latexmk -pdf -outdir=_build practical02/cs203S2020_practical02.tex
 - latexmk -pdf -outdir=_build practical03/cs203S2020_practical03.tex
 - latexmk -pdf -outdir=_build practical04/cs203S2020_practical04.tex
+- latexmk -pdf -outdir=_build practical05/cs203S2020_practical05.tex
 deploy:
   provider: releases
   api_key:
@@ -23,6 +24,7 @@ deploy:
     - _build/cs203S2020_practical02.pdf
     - _build/cs203S2020_practical03.pdf
     - _build/cs203S2020_practical04.pdf
+    - _build/cs203S2020_practical05.pdf
   skip_cleanup: true
   on:
     tags: true
