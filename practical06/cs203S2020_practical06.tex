@@ -226,37 +226,35 @@ Unless you provide the instructor with documentation of the extenuating
 circumstances that you are facing, not accepting the assignment means that you
 automatically receive a failing grade for it.
 
-Study the provided source code and the technical documentation to understand the
-type of output that your program produces.
+As you start this assignment, make sure that you notice that, while this program
+is now correctly formatted and in adherence to best practices for Python
+programming, it instead contains more than one defect.
 %
-Make sure that you notice that this source code is incorrectly formatted and
-written in a fashion that uses deprecated features of the Python programming
-language.
-%
-Part of your job for this assignment is to completely refactor the source code
-so that it meets all of the well-established standards for Python programs.
+Part of your job for this assignment is to identify the defects in the program
+to ensure that the provided test suite passes correctly and that the program as
+a whole runs correctly.
 %
 As you are improving all of the provided code, you should also run the Pytest
-test suite that currently contains two tests. Following the strategy of these
-tests and the documentation for the functions in the program, add all of the
-test cases that you would need to achieve high coverage of the program under
-test.
+test suite that contains three different types of tests. Make sure that you
+understand how these types of test work and try to implement some of your own
+tests that follow these patterns.
 %
-You should also write parameterized Pytest test cases that exercise the
-functions in this Pipeline-style program with numerous inputs. To implement a
-parameterized test case, you must decorate a Python testing function with the
-\command{@pytest.mark.parametrize} annotation, as in Figure~\ref{fig:param}. How
-do you think that parameterized testing makes it easier to better achieve a
-confidence in the correctness of the program under test? What are the
-limitations of parameterized testing? Are there programming styles that do not
-support the use of parameterized testing?
+Since you have already practiced writing single-input tests and parameterized
+tests, now you should try to create and run property-based tests that
+automatically generate inputs using the Hypothesis tool, as seen in
+Figure~\ref{fig:param}.
 %
-Although you are not required to write all of your tests in a parameterized
-fashion, at least some of the new tests that you write must adopt this approach.
+Importantly, the Hypothesis tool can automatically generate inputs to the
+function under test, enabling a tester to systematically explore the input space
+and increasing the likelihood of finding a defect.
 %
-Please see the instructor if you have questions about either how to refactor the
-program's source code to meet the standard or how to write and run parameterized
-tests.
+As you complete this assignment, make sure that you understand how source code
+statements like \command{@given(input_string=text(min_size=1, max_size=100))}
+lead to Hypothesis generating many inputs.
+%
+Please see the instructor if you have questions about either how to repair the
+program's source code to to fix the defects or how to write and run
+Hypothesis-driven tests.
 
 \begin{figure}[t]
 
@@ -276,7 +274,11 @@ def test_filter_normalize_correctly_automated_bounded(input_string):
         assert not word.isspace()
 \end{verbatim}
 
+\vspace*{-.15in}
+
 \caption{A Property-Based Test for {\tt filtered\_normalized\_string} in {\tt compute\_tf\_pipeline}.}\label{fig:param}
+
+\vspace*{-.1in}
 
 \end{figure}
 
@@ -288,21 +290,24 @@ check your Python source code you can get started with the use of the
 GatorGrader tool, typing the command \gatorgraderstart{} in your terminal
 window.
 %
-Once your program is running correctly, fulfilling at least some of the
-assignment's requirements, you should transfer your files to GitHub using the
-\gitcommit{} and \gitpush{} commands. For example, if you want to signal that
-the \testprogramsource{} file has been changed and is ready for transfer to
-GitHub you would first type \gitcommittestprogram{} in your terminal, followed
-by typing \gitpush{} and checking to see that the transfer to GitHub is
-successful.
+Once your program is running, fulfilling at least some of the assignment's
+requirements, you should transfer your files to GitHub using the \gitcommit{}
+and \gitpush{} commands.
 
-After the course instructor enables \step{continuous integration} with a system
-called Travis CI, when you use the \gitpush{} command to transfer your source
-code to your GitHub repository, Travis CI will initialize a \step{build} of your
-assignment, checking to see if it meets all of the requirements. If both your
-source code and writing meet all of the established requirements, then you will
-see a green \checkmark{} in the listing of commits in GitHub after awhile. If
-your submission does not meet the requirements, a red \naughtmark{} will appear
+% For example, if you want to signal that the \testprogramsource{} file has been
+% changed and is ready for transfer to GitHub you would first type
+% \gitcommittestprogram{} in your terminal, followed by typing \gitpush{} and
+% checking to see that the transfer to GitHub is successful.
+
+% After the course instructor enables \step{continuous integration} with a
+% system called Travis CI, when you use the \gitpush{} command to transfer your
+% source code to your GitHub repository,
+
+Remember, Travis CI will initialize a \step{build} of your assignment, checking
+to see if it meets all of the baseline requirements. If both your source code
+and writing meet all of the established requirements, then you will see a green
+\checkmark{} in the listing of commits in GitHub after awhile. If your
+submission does not meet the requirements, a red \naughtmark{} will appear
 instead. The instructor will reduce a student's grade for this assignment if the
 red \naughtmark{} appears on the last commit in GitHub immediately before the
 assignment's due date. Yet, if the green \checkmark{} appears on the last commit
@@ -325,19 +330,21 @@ to submit, using GitHub, the following deliverables.
 \setlength{\itemsep}{0in}
 
 \item A properly documented, well-formatted, and correct version of
-  \testprogramsource{} that contains at least five passing tests and produces
-  the desired diagnostic output. Make sure that some of the tests adhere to the
-  parameterized testing approach supported by Pytest.
+  \testprogramsource{} that contains only passing tests and produces the
+  diagnostic output with Hypothesis.
+
+  % Make sure that some of the tests adhere to the
+  % parameterized testing approach supported by Pytest.
 
 \item A revised version of \mainprogramsource{} that, when appropriate, contains
-  refactored source code that avoids all of the deprecated features of the
-  Python programming language and is in adherence with the established standard
-  for writing Python source code.
+  repaired source code that avoids all of the deprecated features of the Python
+  programming language and is in adherence with the established standard for
+  writing Python source code.
 
 \item Stored in a Markdown file called \reflection{}, a multiple-paragraph
   response, with each paragraph consisting of at least 100 words, for each of
-  the stated prompts. This file should feature a fenced code block that gives
-  the output from running a test suite.
+  the stated prompts. This file should feature fenced code blocks that gives the
+  two outputs from running a test suite.
 
 \end{enumerate}
 
