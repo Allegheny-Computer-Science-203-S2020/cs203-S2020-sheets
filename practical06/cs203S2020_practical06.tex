@@ -1,0 +1,344 @@
+\documentclass[11pt]{article}
+
+% NOTE: The "Edit" sections are changed for each assignment
+
+% Edit these commands for each assignment
+
+\newcommand{\assignmentduedate}{February 26}
+\newcommand{\assignmentassignedate}{February 21}
+\newcommand{\assignmentnumber}{Five}
+
+\newcommand{\labyear}{2020}
+\newcommand{\labdueday}{Wednesday}
+\newcommand{\labassignday}{Friday}
+\newcommand{\labtime}{1:30 pm}
+
+\newcommand{\assigneddate}{Assigned: \labassignday, \assignmentassignedate, \labyear{} at \labtime{}}
+\newcommand{\duedate}{Due: \labdueday, \assignmentduedate, \labyear{} at \labtime{}}
+
+% Edit these commands to give the name to the main program
+
+\newcommand{\mainprogram}{\lstinline{compute_tf_pipeline.py}}
+\newcommand{\mainprogramsource}{\lstinline{termfrequency/compute_tf_pipeline.py}}
+
+\newcommand{\testprogram}{\lstinline{test_compute_tf_pipeline.py}}
+\newcommand{\testprogramsource}{\lstinline{tests/test_compute_tf_pipeline.py}}
+
+% Edit this commands to describe key deliverables
+
+\newcommand{\reflection}{\lstinline{writing/reflection.md}}
+
+% Commands to describe key development tasks
+
+% --> Running gatorgrader.sh
+\newcommand{\gatorgraderstart}{\command{gradle grade}}
+\newcommand{\gatorgradercheck}{\command{gradle grade}}
+
+% --> Compiling and running program with gradle
+\newcommand{\gradlebuild}{\command{gradle build}}
+\newcommand{\gradlerun}{\command{gradle run}}
+
+% Commands to describe key git tasks
+
+% NOTE: Could be improved, problems due to nesting
+
+\newcommand{\gitcommitfile}[1]{\command{git commit #1}}
+\newcommand{\gitaddfile}[1]{\command{git add #1}}
+
+\newcommand{\gitadd}{\command{git add}}
+\newcommand{\gitcommit}{\command{git commit}}
+\newcommand{\gitpush}{\command{git push}}
+\newcommand{\gitpull}{\command{git pull}}
+
+\newcommand{\gitcommitmainprogram}{\command{git commit termfrequency/compute_tf_pipline.py -m "Descriptive commit message"}}
+\newcommand{\gitcommittestprogram}{\command{git commit tests/test_compute_tf_pipline.py -m "Descriptive commit message"}}
+
+% Commands for the textbooks, since there are so many
+
+\newcommand{\cooperative}{{\em Cooperative Software Design\/}}
+\newcommand{\philosophy}{{\em Philosophy of Software Design\/}}
+\newcommand{\thinkpython}{{\em Think Python\/}}
+\newcommand{\programmingstyle}{{\em Exercises in Programming Style\/}}
+\newcommand{\pytest}{{\em Python Testing with Pytest\/}}
+
+% Use this when displaying a new command
+
+\newcommand{\command}[1]{``\lstinline{#1}''}
+\newcommand{\program}[1]{\lstinline{#1}}
+\newcommand{\url}[1]{\lstinline{#1}}
+\newcommand{\channel}[1]{\lstinline{#1}}
+\newcommand{\option}[1]{``{#1}''}
+\newcommand{\step}[1]{``{#1}''}
+
+\usepackage{pifont}
+\newcommand{\checkmark}{\ding{51}}
+\newcommand{\naughtmark}{\ding{55}}
+
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  columns=flexible,
+  breaklines=true
+}
+
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{Computer Science 203}
+\lhead{Practical Assignment \assignmentnumber{}}
+\rfoot{Page \thepage}
+\lfoot{\duedate}
+
+\usepackage{titlesec}
+\titlespacing\section{0pt}{6pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+
+\newcommand{\labtitle}[1]
+{
+  \begin{center}
+    \begin{center}
+      \bf
+      CMPSC 203\\Software Engineering\\
+      Spring 2020\\
+      \medskip
+    \end{center}
+    \bf
+    #1
+  \end{center}
+}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\labtitle{Practical \assignmentnumber{} \\ \assigneddate{} \\ \duedate{}}
+
+\section*{Objectives}
+
+To practice using GitHub to access the files for a practical assignment.
+Additionally, to practice using the Ubuntu operating system and software
+development programs such as a ``terminal window'' and a ``testing tool''. You
+will also continue to practice using Slack to support communication with the
+teaching assistants and the course instructor. You will carry on with practice
+in implementing and running a Python program and also using Pipenv and the
+course's automated grading tool to assess your progress towards correctly
+completing the project. Along with practicing how to use Pytest plugins, you
+will refactor the code of a Python program implemented in the pipeline
+style and then use parameterized testing to establish a confidence in the
+program's correctness.
+
+\section*{Suggestions for Success}
+
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+
+\item {\bf Follow each step carefully}. Slowly read each sentence in the
+  assignment sheet, making sure that you precisely follow each instruction. Take
+  notes about each step that you attempt, recording your questions and ideas and
+  the challenges that you faced. If you are stuck, then please tell a technical
+  leader or instructor what assignment step you recently completed.
+
+\item {\bf Regularly ask and answer questions}. Please log into Slack at the
+  start of a laboratory or practical session and then join the appropriate
+  channel. If you have a question about one of the steps in an assignment, then
+  you can post it to the designated channel. Or, you can ask a student sitting
+  next to you or talk with a technical leader or the course instructor.
+
+\item {\bf Store your files in GitHub}. Starting with this laboratory
+  assignment, you will be responsible for storing all of your files (e.g., Java
+  source code and Markdown-based writing) in a Git repository using GitHub
+  Classroom. Please verify that you have saved your source code in your Git
+  repository by using \command{git status} to ensure that everything is
+  updated. You can see if your assignment submission meets the established
+  correctness requirements by using the provided checking tools on your local
+  computer and by checking the commits in GitHub.
+
+\item {\bf Keep all of your files}. Don't delete your programs, output files,
+  and written reports after you submit them through GitHub; you will need them
+  again when you study for the quizzes and examinations and work on the other
+  laboratory, practical, and final project assignments.
+
+\item {\bf Explore teamwork and technologies}. While certain aspects of the
+  laboratory assignments will be challenging for you, each part is designed to
+  give you the opportunity to learn both fundamental concepts in the field of
+  computer science and explore advanced technologies that are commonly employed
+  at a wide variety of companies. To explore and develop new ideas, you should
+  regularly communicate with your team and/or the student technical leaders.
+
+\item {\bf Hone your technical writing skills}. Computer science assignments
+  require to you write technical documentation and descriptions of your
+  experiences when completing each task. Take extra care to ensure that your
+  writing is interesting and both grammatically and technically correct,
+  remembering that computer scientists must effectively communicate and
+  collaborate with their team members and the student technical leaders and
+  course instructor.
+
+\item {\bf Review the Honor Code on the syllabus}. While you may discuss your
+  assignments with others, copying source code or writing is a violation of
+  Allegheny College's Honor Code.
+
+\end{itemize}
+
+\section*{Reading Assignment}
+
+If you have not done so already, please read all of the relevant ``GitHub
+Guides'', available at \url{https://guides.github.com/}, that explain how to use
+many of the features that GitHub provides. In particular, please make sure that
+you have read guides such as ``Mastering Markdown'' and ``Documenting Your
+Projects on GitHub''; each of them will help you to understand how to use both
+GitHub and GitHub Classroom. To do well on this assignment, you should also read
+Chapters 1 through 5 in {\em Think Python\/} and the Preface and Chapters 1
+through 5 in the {\em Exercises in Programming Style\/}.
+%
+You should also read the first two chapters in \pytest, making sure that you
+understand parameterized testing.
+%
+Please make sure that you review the relevant content in \cooperative~and
+\philosophy.
+%
+You are also expected to find and read all of the online resources that you need
+to complete this assignment.
+
+\section*{Refactoring and Testing a Pipeline-Style Program}
+
+To access the practical assignment, you should go into the
+\channel{\#announcements} channel in our Slack team and find the announcement
+that provides a link for it. Copy this link and paste it into your web browser.
+Now, you should accept the practical assignment and see that GitHub Classroom
+created a new GitHub repository for you to access the assignment's starting
+materials and to store the completed version of your assignment. Specifically,
+to access your new GitHub repository for this assignment, please click the green
+``Accept'' button and then click the link that is prefaced with the label ``Your
+assignment has been created here''. If you accepted the assignment and correctly
+followed these steps, you should have created a GitHub repository with a name
+like
+``Allegheny-Computer-Science-203-Spring-2020/computer-science-203-spring-2020-practical-5-gkapfham''.
+Unless you provide the instructor with documentation of the extenuating
+circumstances that you are facing, not accepting the assignment means that you
+automatically receive a failing grade for it.
+
+Study the provided source code and the technical documentation to understand the
+type of output that your program produces.
+%
+Make sure that you notice that this source code is incorrectly formatted and
+written in a fashion that uses deprecated features of the Python programming
+language.
+%
+Part of your job for this assignment is to completely refactor the source code
+so that it meets all of the well-established standards for Python programs.
+%
+As you are improving all of the provided code, you should also run the Pytest
+test suite that currently contains two tests. Following the strategy of these
+tests and the documentation for the functions in the program, add all of the
+test cases that you would need to achieve high coverage of the program under
+test.
+%
+You should also write parameterized Pytest test cases that exercise the
+functions in this Pipeline-style program with numerous inputs. To implement a
+parameterized test case, you must decorate a Python testing function with the
+\command{@pytest.mark.parametrize} annotation, as in Figure~\ref{fig:param}. How
+do you think that parameterized testing makes it easier to better achieve a
+confidence in the correctness of the program under test? What are the
+limitations of parameterized testing? Are there programming styles that do not
+support the use of parameterized testing?
+%
+Although you are not required to write all of your tests in a parameterized
+fashion, at least some of the new tests that you write must adopt this approach.
+%
+Please see the instructor if you have questions about either how to refactor the
+program's source code to meet the standard or how to write and run parameterized
+tests.
+
+\begin{figure}[t]
+
+\begin{verbatim}
+@pytest.mark.parametrize(
+    "input_string,expected_count",
+    [("hello world", 2), ("hello world example", 3), ("", 0), (" ", 0), ("  ", 0)],
+)
+def test_scan_splits_string_correctly_again(input_string, expected_count):
+    """Check that scan function finds the correct number of words in the String."""
+    assert len(compute_tf_pipeline.scan(input_string)) == expected_count
+\end{verbatim}
+
+\caption{A Parameterized Test Case for the {\tt scan} Function in {\tt compute\_tf\_pipeline}.}\label{fig:param}
+
+\end{figure}
+
+\section*{Checking the Correctness of Your Program and Writing}
+
+In addition to using your own automated Pytest-based tests, you can use
+GatorGrader to check other characteristics of your project. To automatically
+check your Python source code you can get started with the use of the
+GatorGrader tool, typing the command \gatorgraderstart{} in your terminal
+window.
+%
+Once your program is running correctly, fulfilling at least some of the
+assignment's requirements, you should transfer your files to GitHub using the
+\gitcommit{} and \gitpush{} commands. For example, if you want to signal that
+the \testprogramsource{} file has been changed and is ready for transfer to
+GitHub you would first type \gitcommittestprogram{} in your terminal, followed
+by typing \gitpush{} and checking to see that the transfer to GitHub is
+successful.
+
+After the course instructor enables \step{continuous integration} with a system
+called Travis CI, when you use the \gitpush{} command to transfer your source
+code to your GitHub repository, Travis CI will initialize a \step{build} of your
+assignment, checking to see if it meets all of the requirements. If both your
+source code and writing meet all of the established requirements, then you will
+see a green \checkmark{} in the listing of commits in GitHub after awhile. If
+your submission does not meet the requirements, a red \naughtmark{} will appear
+instead. The instructor will reduce a student's grade for this assignment if the
+red \naughtmark{} appears on the last commit in GitHub immediately before the
+assignment's due date. Yet, if the green \checkmark{} appears on the last commit
+in your GitHub repository, then you satisfied all of the main checks and you
+will earn full credit. Unless you provide the course instructor with
+documentation of the severe and extenuating circumstances that you are facing,
+no late work will be considered towards your completion grade for this practical
+assignment.
+
+\section*{Summary of the Required Deliverables}
+
+\noindent Students do not need to submit printed source code or technical
+writing for any assignment in this course. Instead, this assignment invites you
+to submit, using GitHub, the following deliverables.
+
+\vspace*{-.25em}
+
+\begin{enumerate}
+
+\setlength{\itemsep}{0in}
+
+\item A properly documented, well-formatted, and correct version of
+  \testprogramsource{} that contains at least five passing tests and produces
+  the desired diagnostic output. Make sure that some of the tests adhere to the
+  parameterized testing approach supported by Pytest.
+
+\item A revised version of \mainprogramsource{} that, when appropriate, contains
+  refactored source code that avoids all of the deprecated features of the
+  Python programming language and is in adherence with the established standard
+  for writing Python source code.
+
+\item Stored in a Markdown file called \reflection{}, a multiple-paragraph
+  response, with each paragraph consisting of at least 100 words, for each of
+  the stated prompts. This file should feature a fenced code block that gives
+  the output from running a test suite.
+
+\end{enumerate}
+
+\vspace*{-1em}
+
+\section*{Evaluation of Your Practical Assignment}
+
+Practical assignments are graded on a completion --- or ``checkmark'' --- basis.
+If your GitHub repository has a \checkmark{} for the last commit before the
+deadline then you will receive the highest possible grade for the assignment.
+However, you will fail the assignment if you do not complete it correctly, as
+evidenced by a red \naughtmark{} in your commit listing, by the set deadline for
+finishing the project.
+
+\end{document}
