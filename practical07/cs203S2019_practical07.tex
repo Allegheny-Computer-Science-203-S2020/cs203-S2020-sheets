@@ -141,15 +141,6 @@ each style.
 \begin{itemize}
   \setlength{\itemsep}{0pt}
 
-\item {\bf Use the laboratory computers}. The computers in this laboratory
-  feature specialized software for completing this course's Laboratory and
-  practical assignments. If it is necessary for you to work on a different
-  machine, be sure to regularly transfer your work to a laboratory machine so
-  that you can check its correctness. If you cannot use a laboratory computer
-  and you need help with the configuration of your own laptop, then please
-  carefully explain its setup to a technical leader or the course instructor
-  when you are asking questions.
-
 \item {\bf Follow each step carefully}. Slowly read each sentence in the
   assignment sheet, making sure that you precisely follow each instruction.
   Take notes about each step that you attempt, recording your questions and
@@ -369,15 +360,11 @@ class WordFrequencyController(TFExercise):
         word_freqs = self._word_freq_manager.sorted()
         for (w, c) in word_freqs[0:25]:
             print(w, " - ", c)
-
-
-if __name__ == "__main__":
-    WordFrequencyController(sys.argv[1]).run()
 \end{verbatim}
 %
 \vspace*{-.15in}
 %
-\caption{The Main Function and Controller Class in the {\tt compute\_tf\_objectoriented} Program.}\label{fig:main}
+\caption{The Controller Class in the {\tt compute\_tf\_objectoriented} Python Program.}\label{fig:main}
 %
 \vspace*{-.1in}
 %
@@ -416,21 +403,20 @@ to submit, using GitHub, the following deliverables.
 
 \section*{Evaluation of Your Practical Assignment}
 
-Practical assignments are graded on a completion --- or ``checkmark'' --- basis.
-If your GitHub repository has a \checkmark{} for the last commit before the
-deadline then you will receive the highest possible grade for the assignment.
-However, you will fail the assignment if you do not complete it correctly, as
-evidenced by a red \naughtmark{} in your commit listing, by the set deadline for
-finishing the project.
-
-% In adherence to the Honor Code, students should complete this assignment on an
-% individual basis. While it is appropriate for students in this class to have
-% high-level conversations about the assignment, it is necessary to distinguish
-% carefully between the student who discusses the principles underlying a problem
-% with others and the student who produces assignments that are identical to, or
-% merely variations on, someone else's work. Deliverables (e.g., Python source
-% code) that are nearly identical to the work of others will be taken as evidence
-% of violating the \mbox{Honor Code}. Please see the course instructor during
-% office hours if you have questions about the Honor Code policy.
+Using a report that the instructor shares with you through the commit log in
+GitHub, you will privately received a grade on this assignment and feedback on
+your submitted deliverables. Your grade for the assignment will be a function of
+the whether or not it was submitted in a timely fashion and if your program
+received a green \checkmark{} indicating that it met all of the requirements.
+Other factors will also influence your final grade on the assignment. In
+addition to studying the efficiency and effectiveness and documentation of your
+Python source code, the instructor will also evaluate the correctness of your
+technical writing. If your submission receives a red \naughtmark{}, the
+instructor will reduce your grade for the assignment. Please remember to read
+your GitHub repository's \program{README.md} file for a description of the four
+grades that you will receive for this practical assignment. Students should
+follow the instructions in the \program{README.md} file to ask the instructor to
+review their assignment and to provide you with constructive feedback before you
+submit it for the final assessment.
 
 \end{document}
