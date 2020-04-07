@@ -255,6 +255,8 @@ tests.
 
 \begin{figure}[t]
 
+{\footnotesize
+
 \begin{verbatim}
 @pytest.mark.parametrize(
     "input_string,expected_count",
@@ -264,8 +266,13 @@ def test_scan_splits_string_correctly_again(input_string, expected_count):
     """Check that scan function finds the correct number of words in the String."""
     assert len(compute_tf_pipeline.scan(input_string)) == expected_count
 \end{verbatim}
+}
+
+\vspace*{-1em}
 
 \caption{A Parameterized Test Case for the {\tt scan} Function in {\tt compute\_tf\_pipeline}.}\label{fig:param}
+
+\vspace*{-1em}
 
 \end{figure}
 
@@ -285,21 +292,24 @@ GitHub you would first type \gitcommittestprogram{} in your terminal, followed
 by typing \gitpush{} and checking to see that the transfer to GitHub is
 successful.
 
-After the course instructor enables \step{continuous integration} with a system
-called Travis CI, when you use the \gitpush{} command to transfer your source
-code to your GitHub repository, Travis CI will initialize a \step{build} of your
-assignment, checking to see if it meets all of the requirements. If both your
-source code and writing meet all of the established requirements, then you will
-see a green \checkmark{} in the listing of commits in GitHub after awhile. If
-your submission does not meet the requirements, a red \naughtmark{} will appear
-instead. The instructor will reduce a student's grade for this assignment if the
-red \naughtmark{} appears on the last commit in GitHub immediately before the
-assignment's due date. Yet, if the green \checkmark{} appears on the last commit
-in your GitHub repository, then you satisfied all of the main checks and you
-will earn full credit. Unless you provide the course instructor with
-documentation of the severe and extenuating circumstances that you are facing,
-no late work will be considered towards your completion grade for this practical
-assignment.
+% After the course instructor enables \step{continuous integration} with a system
+% called Travis CI, when you use the \gitpush{} command to transfer your source
+% code to your GitHub repository, Travis CI will initialize a \step{build} of your
+% assignment, checking to see if it meets all of the requirements.
+
+% If your submission does not meet the requirements, a red \naughtmark{}
+% will appear instead.
+
+If both your source code and writing meet all of the established requirements,
+then you will see a green \checkmark{} in the listing of commits in GitHub after
+awhile.  The instructor will reduce a student's grade for this
+assignment if the red \naughtmark{} appears on the last commit in GitHub
+immediately before the assignment's due date. Yet, if the green \checkmark{}
+appears on the last commit in your GitHub repository, then you satisfied all of
+the main checks and you will earn full credit. Unless you provide the course
+instructor with documentation of the severe and extenuating circumstances that
+you are facing, no late work will be considered towards your completion grade
+for this practical assignment.
 
 \section*{Summary of the Required Deliverables}
 
@@ -334,11 +344,20 @@ to submit, using GitHub, the following deliverables.
 
 \section*{Evaluation of Your Practical Assignment}
 
-Practical assignments are graded on a completion --- or ``checkmark'' --- basis.
-If your GitHub repository has a \checkmark{} for the last commit before the
-deadline then you will receive the highest possible grade for the assignment.
-However, you will fail the assignment if you do not complete it correctly, as
-evidenced by a red \naughtmark{} in your commit listing, by the set deadline for
-finishing the project.
+Using a report that the instructor shares with you through the commit log in
+GitHub, you will privately received a grade on this assignment and feedback on
+your submitted deliverables. Your grade for the assignment will be a function of
+the whether or not it was submitted in a timely fashion and if your program
+received a green \checkmark{} indicating that it met all of the requirements.
+Other factors will also influence your final grade on the assignment. In
+addition to studying the efficiency and effectiveness and documentation of your
+Python source code, the instructor will also evaluate the correctness of your
+technical writing. If your submission receives a red \naughtmark{}, the
+instructor will reduce your grade for the assignment. Please remember to read
+your GitHub repository's \program{README.md} file for a description of the four
+grades that you will receive for this practical assignment. Students should
+follow the instructions in the \program{README.md} file to ask the instructor to
+review their assignment and to provide you with constructive feedback before you
+submit it for the final assessment.
 
 \end{document}
