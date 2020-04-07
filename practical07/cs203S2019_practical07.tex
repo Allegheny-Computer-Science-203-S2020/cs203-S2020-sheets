@@ -4,17 +4,18 @@
 
 % Edit these commands for each assignment
 
-\newcommand{\assignmentduedate}{April 1}
-\newcommand{\assignmentassignedate}{March 29}
+\newcommand{\assignmentduedate}{April 14}
+\newcommand{\assignmentassignedate}{April 7}
 \newcommand{\assignmentnumber}{Seven}
 
 \newcommand{\labyear}{2020}
-\newcommand{\labdueday}{Monday}
-\newcommand{\labassignday}{Friday}
+\newcommand{\labdueday}{Tuesday}
+\newcommand{\labassignday}{Tuesday}
 \newcommand{\labtime}{1:30 pm}
 
-\newcommand{\assigneddate}{Assigned: \labassignday, \assignmentassignedate, \labyear{} at \labtime{}}
-\newcommand{\duedate}{Due: \labdueday, \assignmentduedate, \labyear{} at \labtime{}}
+% \newcommand{\assigneddate}{Assigned: \labassignday, \assignmentassignedate, \labyear{} at \labtime{}}
+\newcommand{\assigneddate}{Assigned: \labassignday, \assignmentassignedate, \labyear{}}
+\newcommand{\duedate}{Due: \labdueday, \assignmentduedate, \labyear{}}
 
 % Edit these commands to give the name to the main program
 
@@ -248,6 +249,22 @@ language.
 Part of your job for this assignment is to refactor the source code so that it
 meets all of the well-established standards for Python programs.
 %
+Make sure that you format all of the Python source code and its comments so that
+it adheres to all of the linting standards, only disabling certain checks when
+there is no other alternative.
+%
+Figures~\ref{fig:data} and~\ref{fig:main} provide two segments of Python source
+code that illustrate the correct way to reformat the code, adding the
+``pragmas'' that disable certain linting checks as needed.
+%
+You also need to ensure that the function comments adhere to the standard which
+mandates, among other requirements, that there be no spacing in the docstrings
+that must end with a period.
+%
+Students who have questions about how to reformat the source code should talk to
+a technical leader or the course instructor, highlighting the problematic
+linting check.
+
 As you are improving all of the provided code, you should also run the Pytest
 test suite that currently contains one test. Following the strategy of this test
 and the documentation for the functions in the program, add all of the test
@@ -261,14 +278,44 @@ with the \command{@pytest.mark.parametrize} annotation.
 Although you are not required to write all of your tests in a parameterized
 fashion, at least some of the new tests that you write must adopt this approach.
 %
-Finally, please compare and contrast the cookbook and pipeline versions of this
-program to this one that is written in an object-oriented fashion. What are the
-similarities and differences? Which one do you prefer? Which one is easier to
-test?
+Whenever possible, you should also use the Hypothesis automated test data
+generation tool to automatically create inputs for your test cases, documenting
+how the tool enables to you cover the source code of the functions.
+
+Finally, please compare and contrast the pipeline and object-oriented versions
+of this program to this one that is written in an object-oriented fashion. What
+are the similarities and differences? Which one do you prefer? Which one is
+easier to test?
 %
 Please see the instructor if you have questions about how to refactor the
 program's source code to meet set requirements, how to write and run
 parameterized tests, or why the object-oriented system is designed in this way.
+
+\begin{figure}[t]
+%
+\begin{verbatim}
+class DataStorageManager(TFExercise):
+    """Model the contents of the file."""
+
+    def __init__(self, path_to_file):
+        """Define the constructor for the DataStorageManager."""
+        with open(path_to_file) as f:
+            self._data = f.read()
+        pattern = re.compile(r"[\W_]+")
+        self._data = pattern.sub(" ", self._data).lower()
+
+    def words(self):
+        """Return the list of words in storage."""
+        return self._data.split()
+\end{verbatim}
+%
+\vspace*{-.15in}
+%
+\caption{A Correctly Formatted Class in the {\tt compute\_tf\_objectoriented} Python Program.}\label{fig:data}
+%
+\vspace*{-.1in}
+%
+\end{figure}
 
 \section*{Checking the Correctness of Your Program and Writing}
 
@@ -302,6 +349,40 @@ documentation of the severe and extenuating circumstances that you are facing,
 no late work will be considered towards your completion grade for this practical
 assignment.
 
+\begin{figure}[t]
+%
+\begin{verbatim}
+class WordFrequencyController(TFExercise):
+    """Control the process of collecting word frequency data."""
+
+    def __init__(self, path_to_file):
+        """Define the constructor for the WordFrequencyManager."""
+        self._storage_manager = DataStorageManager(path_to_file)
+        self._stop_word_manager = StopWordManager()
+        self._word_freq_manager = WordFrequencyManager()
+
+    def run(self):
+        """Run the process of collecting word frequency data."""
+        for w in self._storage_manager.words():
+            if not self._stop_word_manager.is_stop_word(w):
+                self._word_freq_manager.increment_count(w)
+        word_freqs = self._word_freq_manager.sorted()
+        for (w, c) in word_freqs[0:25]:
+            print(w, " - ", c)
+
+
+if __name__ == "__main__":
+    WordFrequencyController(sys.argv[1]).run()
+\end{verbatim}
+%
+\vspace*{-.15in}
+%
+\caption{The Main Function and Controller Class in the {\tt compute\_tf\_objectoriented} Program.}\label{fig:main}
+%
+\vspace*{-.1in}
+%
+\end{figure}
+
 \section*{Summary of the Required Deliverables}
 
 \noindent Students do not need to submit printed source code or technical
@@ -321,13 +402,13 @@ to submit, using GitHub, the following deliverables.
 
 \item A revised version of \mainprogramsource{} that, when appropriate, contains
   refactored source code that avoids all of the deprecated features of the
-  Python language and is in adherence with the established standard for writing
+  Python language and is in adherence to the established standard for writing
   Python code.
 
-\item Stored in a Markdown file called \reflection{}, a six-paragraph response,
-  with each paragraph consisting of at least 100 words, for each of the stated
-  prompts. This file should also feature fenced code blocks that furnish source
-  code and output from running a test suite.
+\item Stored in a Markdown file called \reflection{}, a multi-paragraph
+  response, with each paragraph consisting of at least 100 words, for each of
+  the prompts. This file should also feature a fenced code block that furnishes
+  the output from running the Pytest test suite.
 
 \end{enumerate}
 
