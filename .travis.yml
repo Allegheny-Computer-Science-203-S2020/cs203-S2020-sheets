@@ -14,6 +14,7 @@ script:
 - latexmk -pdf -outdir=_build practical05/cs203S2020_practical05.tex
 - latexmk -pdf -outdir=_build practical06/cs203S2020_practical06.tex
 - latexmk -pdf -outdir=_build practical07/cs203S2020_practical07.tex
+- latexmk -pdf -outdir=_build practical08/cs203S2020_practical08.tex
 - latexmk -pdf -outdir=_build exam1/cs203S2020_studyguide_exam01.tex
 deploy:
   provider: releases
@@ -30,6 +31,7 @@ deploy:
     - _build/cs203S2020_practical05.pdf
     - _build/cs203S2020_practical06.pdf
     - _build/cs203S2020_practical07.pdf
+    - _build/cs203S2020_practical08.pdf
     - _build/cs203S2020_studyguide_exam01.pdf
   skip_cleanup: true
   on:
