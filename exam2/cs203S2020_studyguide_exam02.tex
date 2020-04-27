@@ -4,17 +4,18 @@
 
 % Edit these commands for each assignment
 
-\newcommand{\assignmentduedate}{May 3}
-\newcommand{\assignmentassignedate}{April 29}
-\newcommand{\assignmentnumber}{Three}
+\newcommand{\assignmentduedate}{May 4}
+\newcommand{\assignmentassignedate}{May 1}
+\newcommand{\assignmentnumber}{Two}
 
-\newcommand{\labyear}{2019}
-\newcommand{\assignedday}{Monday}
-\newcommand{\dueday}{Friday}
-\newcommand{\labtime}{7:00 pm}
+\newcommand{\labyear}{2020}
+\newcommand{\assignedday}{Friday}
+\newcommand{\dueday}{Monday}
+\newcommand{\releasedtime}{9:00 am}
+\newcommand{\duetime}{12:00 midnight}
 
-\newcommand{\assigneddate}{Announced: \assignedday, \assignmentassignedate, \labyear{}}
-\newcommand{\duedate}{Exam: \dueday, \assignmentduedate, \labyear{} at \labtime{}}
+\newcommand{\assigneddate}{Released: \assignedday, \assignmentassignedate, \labyear{} at \releasedtime{}}
+\newcommand{\duedate}{Due: \dueday, \assignmentduedate, \labyear{} at \duetime{}}
 
 % Edit these commands to give the name to the main program
 
@@ -100,7 +101,7 @@ descriptive commit message"}}
     \begin{center}
       \bf
       CMPSC 203\\Software Engineering\\
-      Fall 2019\\
+      Spring 2020\\
       \medskip
     \end{center}
     \bf
@@ -116,19 +117,30 @@ descriptive commit message"}}
 
 \section*{Introduction}
 
-\noindent The exam will be ``closed notes'' and ``closed book'' and it will
-cover the following materials. Please review the ``Course Schedule'' on the Web
-site for the course to see the content and slides that we have covered to this
-date. Students may post questions about this material to our Slack workspace.
+Requiring students to provide answers in a Markdown file, the final examination
+for this course will be administered through GitHub Classroom and GitHub. You
+will receive access to the online examination at \releasedtime{} on
+\assignmentassignedate{}, 2020.
+%
+Although the course instructor anticipates that the examination will require
+students to dedicate about three hours to its completion, every student will
+have until \duetime{} on May 4, 2020 to submit their final examination.
+%
+The exam will be ``closed notes'' and ``closed book'' and it will cover the
+following materials. Please review the ``Course Schedule'' on the Web site for
+the course to see the content and slides that we have covered to this date.
+Students may post questions about this material to our Slack workspace. The
+instructor encourages students to form online study groups to review for this
+upcoming examination.
 
 \vspace*{-.5em}
 \begin{itemize}
 
-  \itemsep 0in
+  \itemsep 0.05in
 
-  \item Chapters 1 through 6 and 12 through 15 and 16 through 18 in \philosophy{}.
+  \item Chapters 1 through 6 and 12 through 15 in \philosophy{}.
 
-  \item Chapters 1 through 7 and 9 through 14 in \cooperative{}.
+  \item Chapters 1 through 7 and 9 through 12 in \cooperative{}.
 
   \item Chapters 1 through 5 in \pytest{}.
 
@@ -140,8 +152,8 @@ date. Students may post questions about this material to our Slack workspace.
   \item All design, implementation, and testing details for the first long-term
     software project.
 
-  \item Your class notes, class activities, lecture slides, and the first seven
-    practical assignments.
+  \item Your class notes, class activities, lecture slides, and details on the
+    eight practical assignments.
 
   \item Knowledge of the basic commands necessary for using Git and GitHub;
     understanding of the ``GitHub Flow'' model for collaboration; basic
@@ -157,26 +169,26 @@ date. Students may post questions about this material to our Slack workspace.
 \end{itemize}
 \vspace*{-.5em}
 
-\noindent The examination will include a mix of questions that will require you
-to draw and/or comment on a diagram, write a short answer, explain and/or write
-a source code segment, or give and comment on a list of concepts or points. The
-emphasis will be on the following list of illustrative subjects. Please note
+The examination will include a mix of questions that will require you to draw
+and/or comment on a technical diagram, write a short answer, explain, write, or
+test a source code segment, or furnish and explain a list of technical concepts.
+%
+When students are asked to draw a technical diagram they must create it in a
+tool like \url{https://excalidraw.com/}, export the diagram to a PNG or SVG
+graphic file, and then transfer the graphic file to their remote GitHub
+repository.
+
+The emphasis will be on the following list of illustrative subjects. Please note
 that this list is not exhaustive --- rather it is designed to suggest
 representative topics.
-
+%
 When studying for the test, don't forget that the Web site for our course
 contains mobile-ready slides that will provide you with an overview of the key
-concepts that we discussed in the previous modules. You can use the color scheme
-in the slides to notice points where we, for instance, completed an in-class
-activity, discussed a key point, or made reference to additional details
-available in the one of the textbooks. If students have questions about the
-material on this review sheet, then they should schedule a meeting with the
-instructor or ask a question in Slack.
+concepts that we discussed throughout the semester.
 
 \vspace*{-.05in}
 \begin{itemize}
 
-  \itemsep 0in
   \itemsep 0.05in
 
   \item Topics from \philosophy{}:
@@ -184,7 +196,7 @@ instructor or ask a question in Slack.
     \vspace*{-.05in}
     \begin{itemize}
 
-      \itemsep 0.1in
+      \itemsep 0.05in
 
       \item Knowledge of the fundamental nature of and causes for software
         complexity
@@ -198,7 +210,7 @@ instructor or ask a question in Slack.
       \item The relationship between general purpose modules and information
         hiding
 
-      \item Why a pass-through method is a hallmark of poor software design
+      \item Why a pass-through method or function is a hallmark of poor software design
 
       \item The common excuses given by software engineers for not writing
         source code comments
@@ -225,7 +237,7 @@ instructor or ask a question in Slack.
     \vspace*{-.05in}
     \begin{itemize}
 
-      \itemsep 0.1in
+      \itemsep 0.05in
       % \itemsep 0in
 
       \item The role(s) that software engineers play in a technical organization
@@ -275,9 +287,13 @@ instructor or ask a question in Slack.
   \item Topics from \pytest{}:
     %
     \vspace*{-.05in}
+
     \begin{itemize}
 
-      \itemsep 0.1in
+      \itemsep 0.05in
+
+      \item How manual testing and automated testing with Pytest are similar and
+        different
 
       \item The benefits and drawbacks associated with automatically testing a
         Python function
@@ -306,8 +322,8 @@ instructor or ask a question in Slack.
       \item The characteristics of programming styles that limit the application
         of automated testing
 
-      \item How to implement and test a plugin that adheres to the Pytest plugin
-        interface
+      % \item How to implement and test a plugin that adheres to the Pytest
+        % plugin interface
 
     \end{itemize}
 
@@ -342,14 +358,13 @@ instructor or ask a question in Slack.
         programming styles:
 
         \begin{itemize}
-          \itemsep 0.025in
+          \itemsep 0.05in
           \item Monolithic
           \item Cookbook
           \item Pipeline
           \item Kick Forward
           \item Things
           \item Aspects
-          \item Plugins
         \end{itemize}
 
     \end{itemize}
@@ -358,7 +373,7 @@ instructor or ask a question in Slack.
 
 \section*{Reminder Concerning the Honor Code}
 
-\vspace*{-.025in}
+\vspace*{-.02in}
 
 \noindent Students are required to fully adhere to the Honor Code during the
 completion of this exam. More details about the Allegheny College Honor Code are
@@ -366,6 +381,8 @@ provided on the syllabus. Students are strongly encouraged to carefully review
 the full statement of the Honor Code before taking this exam. If you do not
 understand Allegheny College's Honor Code, please schedule a meeting with the
 instructor.
+
+\vspace*{.1in}
 
 The following is a review of Honor Code statement from the course
 syllabus:
