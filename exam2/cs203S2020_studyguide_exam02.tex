@@ -1,0 +1,390 @@
+\documentclass[11pt]{article}
+
+% NOTE: The "Edit" sections are changed for each assignment
+
+% Edit these commands for each assignment
+
+\newcommand{\assignmentduedate}{May 3}
+\newcommand{\assignmentassignedate}{April 29}
+\newcommand{\assignmentnumber}{Three}
+
+\newcommand{\labyear}{2019}
+\newcommand{\assignedday}{Monday}
+\newcommand{\dueday}{Friday}
+\newcommand{\labtime}{7:00 pm}
+
+\newcommand{\assigneddate}{Announced: \assignedday, \assignmentassignedate, \labyear{}}
+\newcommand{\duedate}{Exam: \dueday, \assignmentduedate, \labyear{} at \labtime{}}
+
+% Edit these commands to give the name to the main program
+
+\newcommand{\mainprogram}{\lstinline{DisplayOutput}}
+\newcommand{\mainprogramsource}{\lstinline{src/main/java/labone/DisplayOutput.java}}
+
+% Edit this commands to describe key deliverables
+
+\newcommand{\reflection}{\lstinline{writing/reflection.md}}
+
+% Commands to describe key development tasks
+
+% --> Running gatorgrader.sh
+\newcommand{\gatorgraderstart}{\command{./gatorgrader.sh --start}}
+\newcommand{\gatorgradercheck}{\command{./gatorgrader.sh --check}}
+
+% --> Compiling and running program with gradle
+\newcommand{\gradlebuild}{\command{gradle build}}
+\newcommand{\gradlerun}{\command{gradle run}}
+
+% Commands to describe key git tasks
+
+% NOTE: Could be improved, problems due to nesting
+
+\newcommand{\gitcommitfile}[1]{\command{git commit #1}}
+\newcommand{\gitaddfile}[1]{\command{git add #1}}
+
+\newcommand{\gitadd}{\command{git add}}
+\newcommand{\gitcommit}{\command{git commit}}
+\newcommand{\gitpush}{\command{git push}}
+\newcommand{\gitpull}{\command{git pull}}
+
+\newcommand{\gitcommitmainprogram}{\command{git commit src/main/java/labone/DisplayOutput.java -m "Your
+descriptive commit message"}}
+
+% The titles of the new books
+
+\newcommand{\cooperative}{{\em Cooperative Software Design\/}}
+\newcommand{\philosophy}{{\em Philosophy of Software Design\/}}
+\newcommand{\thinkpython}{{\em Think Python\/}}
+\newcommand{\programmingstyle}{{\em Exercises in Programming Style\/}}
+\newcommand{\pytest}{{\em Python Testing with Pytest\/}}
+
+% Use this when displaying a new command
+
+\newcommand{\command}[1]{``\lstinline{#1}''}
+\newcommand{\program}[1]{\lstinline{#1}}
+\newcommand{\url}[1]{\lstinline{#1}}
+\newcommand{\channel}[1]{\lstinline{#1}}
+\newcommand{\option}[1]{``{#1}''}
+\newcommand{\step}[1]{``{#1}''}
+
+\usepackage{pifont}
+\newcommand{\checkmark}{\ding{51}}
+\newcommand{\naughtmark}{\ding{55}}
+
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  columns=flexible,
+  breaklines=true
+}
+
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{Computer Science 203}
+\lhead{Exam \assignmentnumber{}}
+\rfoot{Page \thepage}
+\lfoot{\duedate}
+
+\usepackage{titlesec}
+\titlespacing\section{0pt}{6pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+
+\newcommand{\guidetitle}[1]
+{
+  \begin{center}
+    \begin{center}
+      \bf
+      CMPSC 203\\Software Engineering\\
+      Fall 2019\\
+      \medskip
+    \end{center}
+    \bf
+    #1
+  \end{center}
+}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\guidetitle{Exam \assignmentnumber{} Study Guide \\ \assigneddate{} \\ \duedate{}}
+
+\section*{Introduction}
+
+\noindent The exam will be ``closed notes'' and ``closed book'' and it will
+cover the following materials. Please review the ``Course Schedule'' on the Web
+site for the course to see the content and slides that we have covered to this
+date. Students may post questions about this material to our Slack workspace.
+
+\vspace*{-.5em}
+\begin{itemize}
+
+  \itemsep 0in
+
+  \item Chapters 1 through 6 and 12 through 15 and 16 through 18 in \philosophy{}.
+
+  \item Chapters 1 through 7 and 9 through 14 in \cooperative{}.
+
+  \item Chapters 1 through 5 in \pytest{}.
+
+  \item Selected chapters from 1 through 19 in \programmingstyle{}.
+
+  \item All relevant chapters in \thinkpython{} (e.g., be able to write and
+    document a Python program).
+
+  \item All design, implementation, and testing details for the first long-term
+    software project.
+
+  \item Your class notes, class activities, lecture slides, and the first seven
+    practical assignments.
+
+  \item Knowledge of the basic commands necessary for using Git and GitHub;
+    understanding of the ``GitHub Flow'' model for collaboration; basic
+    understanding of the Markdown syntax.
+
+  \item The concepts introduced and reviewed during the laboratory and practical
+    sessions (e.g., the key programming styles and how to use testing and
+    linting tools in the Python language).
+
+  \item Lessons learned from the team-based implementation and delivery of
+    real-world software.
+
+\end{itemize}
+\vspace*{-.5em}
+
+\noindent The examination will include a mix of questions that will require you
+to draw and/or comment on a diagram, write a short answer, explain and/or write
+a source code segment, or give and comment on a list of concepts or points. The
+emphasis will be on the following list of illustrative subjects. Please note
+that this list is not exhaustive --- rather it is designed to suggest
+representative topics.
+
+When studying for the test, don't forget that the Web site for our course
+contains mobile-ready slides that will provide you with an overview of the key
+concepts that we discussed in the previous modules. You can use the color scheme
+in the slides to notice points where we, for instance, completed an in-class
+activity, discussed a key point, or made reference to additional details
+available in the one of the textbooks. If students have questions about the
+material on this review sheet, then they should schedule a meeting with the
+instructor or ask a question in Slack.
+
+\vspace*{-.05in}
+\begin{itemize}
+
+  \itemsep 0in
+  \itemsep 0.05in
+
+  \item Topics from \philosophy{}:
+    %
+    \vspace*{-.05in}
+    \begin{itemize}
+
+      \itemsep 0.1in
+
+      \item Knowledge of the fundamental nature of and causes for software
+        complexity
+
+      \item The similarities and differences between strategic and tactical
+        programming
+
+      \item Red flags for poor module design (e.g., ``shallow module'' and
+        ``information leakage'')
+
+      \item The relationship between general purpose modules and information
+        hiding
+
+      \item Why a pass-through method is a hallmark of poor software design
+
+      \item The common excuses given by software engineers for not writing
+        source code comments
+
+      \item Practical strategies for avoiding the red flags associated with poor
+        source code comments
+
+      \item How to apply the maxim ``what and how, not why'' to commenting a
+        program's code
+
+      \item The ability to fix code comments so that they reduce a software
+        system's complexity
+
+      \item Best practices for writing version control commit messages and source code comments
+
+      \item The strategies and trade-offs associated with naming and referencing program variables
+
+      \item Knowledge of (and solutions for) all red-flags associated with poor software engineering
+
+    \end{itemize}
+
+  \item Topics from \cooperative{}:
+    %
+    \vspace*{-.05in}
+    \begin{itemize}
+
+      \itemsep 0.1in
+      % \itemsep 0in
+
+      \item The role(s) that software engineers play in a technical organization
+
+      \item The ways in which communication is central to the process of
+        software engineering
+
+      \item How to measure the productivity and ``technical waste'' of a
+        software engineering team
+
+      \item The criteria used to evaluate the quality of a software requirement
+
+      \item Knowledge of the trade-offs associated with different software
+        architectures
+
+      \item How the spiral model is an alternative to the waterfall model for
+        software engineering
+
+      \item The key ideas associated with agile methods and extreme programming
+
+      \item The similarities and differences between verification and validation
+        activities
+
+      \item Precise definitions and examples of the terms ``fault'',
+        ``failure'', and ``error''
+
+      \item The limitations and benefits of code reviews and both manual and
+        automated testing
+
+      \item How code coverage and mutation analysis support automated and manual
+        testing
+
+      \item The purposes, benefits, and drawbacks of different types of testing
+        (e.g., unit testing)
+
+      \item How program analysis and monitoring aid the creation of efficient
+        and correct software
+
+      \item The relationship between the phases of testing, fault localization,
+        and debugging
+
+      \item How regression testing enables software engineers to confidently fix
+        and extend a program
+
+    \end{itemize}
+
+  \item Topics from \pytest{}:
+    %
+    \vspace*{-.05in}
+    \begin{itemize}
+
+      \itemsep 0.1in
+
+      \item The benefits and drawbacks associated with automatically testing a
+        Python function
+
+      \item The six possible outcomes from running a Pytest test case on a
+        Python function
+
+      \item How the Pytest framework supports the capture of a program's system
+        output
+
+      \item How to configure Pytest through command-line arguments and
+        configuration files
+
+      \item The role that test oracles (i.e., \program{assert} calls) play
+        during the execution of a test case
+
+      \item The benefits associated with implementing and running parameterized
+        test cases
+
+      \item The need for test case independence and the way in which test
+        fixtures provide it
+
+      \item How to use Python and Pytest to implement and test large-scale
+        software applications
+
+      \item The characteristics of programming styles that limit the application
+        of automated testing
+
+      \item How to implement and test a plugin that adheres to the Pytest plugin
+        interface
+
+    \end{itemize}
+
+  \item Topics from \programmingstyle{}:
+    %
+    \vspace*{-.05in}
+    \begin{itemize}
+
+      \itemsep 0.1in
+
+      \item The input, output, and behavior of and code for the program
+        calculating term frequency
+
+      \item The way in which a programming style emerges from a system's design constraints
+
+      \item The benefits and drawbacks associated with using styles during
+        software engineering
+
+      \item How different programming styles support and/or limit various
+        software testing methods
+
+      \item The ways in which programming styles connect to red-flags for
+        software engineering
+
+      \item How to apply the studied programming styles in the Python
+        programming language
+
+      \item How to refactor a Python program so that it correctly adheres to a
+        programming style
+
+      \item The constraints and Python code associated with the following
+        programming styles:
+
+        \begin{itemize}
+          \itemsep 0.025in
+          \item Monolithic
+          \item Cookbook
+          \item Pipeline
+          \item Kick Forward
+          \item Things
+          \item Aspects
+          \item Plugins
+        \end{itemize}
+
+    \end{itemize}
+
+\end{itemize}
+
+\section*{Reminder Concerning the Honor Code}
+
+\vspace*{-.025in}
+
+\noindent Students are required to fully adhere to the Honor Code during the
+completion of this exam. More details about the Allegheny College Honor Code are
+provided on the syllabus. Students are strongly encouraged to carefully review
+the full statement of the Honor Code before taking this exam. If you do not
+understand Allegheny College's Honor Code, please schedule a meeting with the
+instructor.
+
+The following is a review of Honor Code statement from the course
+syllabus:
+
+\begin{quote}
+  The Academic Honor Program that governs the entire academic program at
+  Allegheny College is described in the Allegheny Academic Bulletin. The Honor
+  Program applies to all work that is submitted for academic credit or to meet
+  non-credit requirements for graduation at Allegheny College. This includes all
+  work assigned for this class (e.g., examinations, laboratory assignments, and
+  the final project). All students who have enrolled in the College will work
+  under the Honor Program. Each student who has matriculated at the College has
+  acknowledged the following pledge:
+\end{quote}
+
+\begin{quote}
+  I hereby recognize and pledge to fulfill my responsibilities, as defined in
+  the Honor Code, and to maintain the integrity of both myself and the College
+  community as a whole.
+\end{quote}
+
+\end{document}
